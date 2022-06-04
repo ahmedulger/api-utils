@@ -1,9 +1,11 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'com.ulger'
 version '1.0'
+sourceCompatibility = '11'
 
 repositories {
     mavenLocal()
@@ -12,4 +14,16 @@ repositories {
 
 dependencies {
     testImplementation 'junit:junit:4.13.2'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.ulger'
+            artifactId = 'api-utils'
+            version = '1.0'
+
+            from components.java
+        }
+    }
 }
